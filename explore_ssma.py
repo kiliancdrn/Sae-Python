@@ -45,8 +45,11 @@ def est_avant(profil1, profil2):
     Returns:
         bool: True si profil1 se place avant profil2, False sinon
     """
-    pass
-
+    if profil1[1]<profil2[1]:
+        return True
+    elif profil1[1]==profil2[1] and profil1[0]<profil2[0]:
+        return True 
+    return False 
 
 def moyenne_heures_ecran(liste_profils):
     """calcule le temps d'écran quotidien moyen des étudiants de la liste
@@ -57,7 +60,14 @@ def moyenne_heures_ecran(liste_profils):
     Returns:
         float: le temps d'écran quotidien moyen en heures, ou None si la liste est vide
     """
-    pass
+    if not liste_profils:
+        return None 
+    res = 0
+    for i in range(len(liste_profils)):
+        res+=liste_profils[i][3]
+    return res/len(liste_profils)
+
+
 
 
 def taux_dependance(liste_profils):

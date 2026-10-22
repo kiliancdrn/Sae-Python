@@ -79,16 +79,22 @@ gros_consommateur = (98, 'Japan', 'TikTok', 7.2, 4.2, 3, 0)
 def test_est_dependant():
     assert ssma.est_dependant(profil1) is True
     assert ssma.est_dependant(profil3) is False
+    assert ssma.est_dependant(profil4) is False 
+    assert ssma.est_dependant(profil2) is True 
 
 
 def test_est_avant():
     assert ssma.est_avant(profil4, profil1) is True    # Belgium avant France
     assert ssma.est_avant(profil1, profil4) is False
-
+    assert ssma.est_avant(profil2, profil3) is True 
+    assert ssma.est_avant(profil4,profil2) is True
 
 def test_moyenne_heures_ecran():
     assert ssma.moyenne_heures_ecran(liste5) == (2.1 + 4.5) / 2
     assert ssma.moyenne_heures_ecran([profil1]) == 5.2
+    assert ssma.moyenne_heures_ecran(liste4) == (6.0 +3.0+ 5.2) / 3
+    assert ssma.moyenne_heures_ecran([profil2]) == 7.0
+    assert ssma.moyenne_heures_ecran([])== None 
 
 
 def test_taux_dependance():
